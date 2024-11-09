@@ -30,7 +30,12 @@ def read_me():
     return {"message": "Welcome to the KNN Recommendation API"}
 
 
-@app.post("/get-recommendations/", summary="recommendations for exhibitors")
+@app.post("/get-recommendations/", summary="recommendations for exhibitors",
+          description="Используйте этот эндпоинт для получения рекомендаций для компании на основе ее интересов и данных от сканирования. "
+                      "\nДля запроса укажите id компании, для которой необходимо подобрать рекомендации. "
+                      "\nЗначения id компаний находятся в диапазоне от 4502 до 4560. "
+                      "\nЭндпоинт вернет список рекомендованных посетителей, не включая уже отсканированных.")
+
 def get_recommendations(user_id: int):
     # Создание пар интересов только однажды
     data_pairs = []
